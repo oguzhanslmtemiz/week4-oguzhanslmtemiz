@@ -1,3 +1,7 @@
-export interface DuplicateError {
-  code: number;
+export interface IDatabaseError {
+  code: string;
+  errno: number;
+  sqlMessage: string;
+  sqlState: string;
+  fatal: boolean;
 }

@@ -1,8 +1,8 @@
 import { IUser } from "../interfaces/User";
-import User from "../models/User";
+import {User} from "../models/entity/User";
 
 const create = async (data: IUser) => {
-  return await User.create(data);
+  return await User.create(data).save();
 };
 
 const read = async (username: string) => {

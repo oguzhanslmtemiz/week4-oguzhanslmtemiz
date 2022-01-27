@@ -1,5 +1,3 @@
-import { Document } from "mongoose";
-
 export interface IUser {
   name: string;
   surname?: string;
@@ -7,4 +5,4 @@ export interface IUser {
   password: string;
 }
 
-export interface IUserDocument extends IUser, Document {}
+export type TokenPayload = Omit<IUser, "password"> & { id: number };

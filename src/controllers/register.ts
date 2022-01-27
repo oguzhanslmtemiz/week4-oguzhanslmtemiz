@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import httpStatus from "http-status";
-import { DuplicateError } from "../interfaces/Error";
+import { IDatabaseError } from "../interfaces/Error";
 import { create } from "../services/users";
 
 export const createUser = async (req: Request, res: Response) => {
@@ -8,8 +8,8 @@ export const createUser = async (req: Request, res: Response) => {
     const user = await create(req.body);
     res.status(httpStatus.CREATED).send(user);
   } catch (error) {
-    const duplicateErr = error as DuplicateError;
-    if (duplicateErr.code === 11000) {
+    const duplicateErr = error as IDatabaseError;
+    if (duplicateErr.code === "ER_DUP_ENTRY") {
       res
         .status(httpStatus.NOT_ACCEPTABLE)
         .send({ error: "Username already in use" });

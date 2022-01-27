@@ -2,7 +2,7 @@
 
 ## Tech Stack
 
-**Server:** Node, Express, Mongoose, JWT, joi, bcrypt, CORS, Helmet, Dotenv, express-session, http-status, nodemon, ts-node
+**Server:** Node, Express, Mysql, TypeORM, JWT, joi, bcrypt, CORS, Helmet, Dotenv, express-session, http-status, nodemon, ts-node
 
 ## API Reference
 
@@ -16,26 +16,42 @@
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`PORT` `DB_URL` `SESSION_SECRET` `JWT_SECRET`
+> `PORT` `SESSION_SECRET` `JWT_SECRET` `TYPEORM_HOST` `TYPEORM_PORT` `TYPEORM_USERNAME` `TYPEORM_PASSWORD` `TYPEORM_DATABASE`
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/Kodluyoruz-NodeJs-Bootcamp/week3-oguzhanslmtemiz.git
+  git clone https://github.com/Kodluyoruz-NodeJs-Bootcamp/week4-oguzhanslmtemiz.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd week3-oguzhanslmtemiz
+  cd week4-oguzhanslmtemiz
 ```
 
 Install dependencies
 
 ```bash
   yarn install
+```
+
+Copy the .env.example file and call it .env and edit the variables as you need.
+
+```bash
+  cp .env.example .env
+```
+
+Set your database credentials and create a MySQL database based on the variables in the .env file
+
+```bash
+  > Create a user with all permissions. username: test, password: test
+
+  mysql> CREATE DATABASE gustobootcampw4
+
+  * All necessary tables will be created automatically when the user is registered
 ```
 
 Start the server

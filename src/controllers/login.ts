@@ -17,12 +17,11 @@ export const getUser = async (req: Request, res: Response) => {
       if (match) {
         req.session.user = getUserAgentFromHeader(req);
 
-        // mongoose have a toObject method which converts the mongoose document into a plain JavaScript object.
-        const { password, ...userObj } = user.toObject();
-        const token = generateToken(user, req.session.user?.agent);
+        const { password, ...userObj } = user
+        const token = generateToken(userObj, req.session.user?.agent);
         const response = { ...userObj, token };
 
-        res.status(httpStatus.FOUND).send(response);
+        res.status(httpStatus.OK).send(response);
       } else {
         res
           .status(httpStatus.NOT_FOUND)

@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { IUserDocument } from "../interfaces/User";
+import { TokenPayload } from "../interfaces/User";
 
 const hashPassword = async (password: string) => {
   return await bcrypt.hash(password, 10);
@@ -43,11 +43,11 @@ const compareAgents = (
 };
 
 const generateToken = (
-  { _id, username }: IUserDocument,
+  { id, username }: TokenPayload,
   agent: string | undefined
 ): string => {
   const payload = {
-    _id,
+    id,
     username,
     agent,
   };
